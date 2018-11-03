@@ -1,0 +1,27 @@
+/*===================COMMON START====================*/
+
+/*===================COMMON END====================*/
+
+/*===================TOPBAR START====================*/
+.navbar-brand {
+  padding: 6px 15px;
+}
+
+.navbar{
+  border-radius: 0px;
+}
+
+.navbar-nav>li>a {
+  text-transform: uppercase;
+  font-family: 'Roboto Condensed', sans-serif;
+  line-height: 38px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  padding-bottom: 0px;
+  color: #ffffff !important;
+}
+
+.navbar-nav>li>a:hover {
+  color: #ef9627 !important;
+}
+/*===================TOPBAR END====================*/
