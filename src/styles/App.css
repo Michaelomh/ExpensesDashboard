@@ -4,7 +4,7 @@
 
 /*===================TOPBAR START====================*/
 .navbar-brand {
-  padding: 6px 15px;
+  padding: 3px 15px;
 }
 
 .navbar{
@@ -14,7 +14,6 @@
 .navbar-nav>li>a {
   text-transform: uppercase;
   font-family: 'Roboto Condensed', sans-serif;
-  line-height: 38px;
   font-weight: bold;
   letter-spacing: 1px;
   padding-bottom: 0px;
@@ -22,6 +21,83 @@
 }
 
 .navbar-nav>li>a:hover {
-  color: #ef9627 !important;
+  color: #70dd89 !important;
 }
 /*===================TOPBAR END====================*/
+
+/*===================LOGIN START====================*/
+.login-container {
+  height: 100vh;
+  width: 100vw;
+  padding-top: 15vh;
+  background: #2d7e4b;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(135deg, #83b0e9, #2d7e4b);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(135deg, #83b0e9, #2d7e4b); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.login-container>div>div>div {
+  max-width: 350px;
+}
+
+.login-logo {
+  width: 70%;
+  margin: 0px auto;
+  margin-bottom: 50px;
+}
+
+.login-form-group {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 1.4rem;
+  letter-spacing: 1px;
+}
+
+.login-form-group > input {
+  background-color: transparent;
+  padding: 0px;
+  border-radius: 0px;
+  border: 0px;
+  box-shadow: none;
+  margin-bottom: 25px;
+  font-size: 2rem;
+  border-bottom: 2px solid #333333;
+}
+
+.login-form-group > label {
+  margin-bottom: 0px;
+}
+
+.login-form-group > button {
+  width: 100%;
+  padding: 12px;
+  border-radius: 0px;
+  border: 0px;
+  color:#ffffff;
+  font-size: 1.4rem;
+  background-color: #666666;
+  background-image: none;
+}
+
+.login-form-group > button:hover {
+  background-color: #b2e88d;
+  background-image: none;
+  color: #000000;
+}
+
+.login-form-group > input:focus {
+  box-shadow: none;
+  border-color: #333333;
+}
+
+.login-error {
+    background-color: #c0392b;
+    padding: 4px 8px;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.login-error > span {
+  color: #fff;
+  font-size: 1.5rem;
+}
+
+/*===================LOGIN START====================*/

@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://michaelomh.github.io/ExpensesDashboard/",
   "dependencies": {
+    "firebase": "^5.5.7",
     "gh-pages": "^2.0.1",
     "react": "^16.6.0",
     "react-bootstrap": "^0.32.4",
