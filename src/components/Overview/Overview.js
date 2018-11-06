@@ -13,7 +13,7 @@ class Overview extends Component {
     return (
       <div>
       <TopBar />
-        Start of Overview Page
+        Start of Overview
       </div>
     );
   }

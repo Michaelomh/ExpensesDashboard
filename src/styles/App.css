@@ -1,5 +1,11 @@
 /*===================COMMON START====================*/
-
+#root {
+  width: 100vw;
+  height: 100vh;
+  background: #7ddd8e;
+  background: -webkit-linear-gradient(135deg, #7ddd8e, #2956b1, #792484);
+  background: linear-gradient(135deg, #7ddd8e, #2956b1, #792484);
+}
 /*===================COMMON END====================*/
 
 /*===================TOPBAR START====================*/
@@ -9,20 +15,23 @@
 
 .navbar{
   border-radius: 0px;
+  background-image: none;
+  border:none;
+  background: transparent;
 }
 
-.navbar-nav>li>a {
-  text-transform: uppercase;
-  font-family: 'Roboto Condensed', sans-serif;
-  font-weight: bold;
-  letter-spacing: 1px;
-  padding-bottom: 0px;
-  color: #ffffff !important;
+.navbar-list > a {
+    color: #ffffff !important;
+    text-transform: uppercase;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-weight: bold;
+    letter-spacing: 2px;
 }
 
-.navbar-nav>li>a:hover {
-  color: #70dd89 !important;
+.navbar-list > a:hover {
+  color: #000 !important;
 }
+
 /*===================TOPBAR END====================*/
 
 /*===================LOGIN START====================*/
@@ -59,11 +68,14 @@
   box-shadow: none;
   margin-bottom: 25px;
   font-size: 2rem;
+  color: #333333;
   border-bottom: 2px solid #333333;
 }
 
-.login-form-group > label {
+.control-label {
   margin-bottom: 0px;
+  color: #aeff77;
+  letter-spacing: 2px;
 }
 
 .login-form-group > button {
@@ -73,8 +85,10 @@
   border: 0px;
   color:#ffffff;
   font-size: 1.4rem;
-  background-color: #666666;
+  background-color: #333333;
   background-image: none;
+  letter-spacing: 1px;
+  font-weight: bold;
 }
 
 .login-form-group > button:hover {
@@ -83,9 +97,9 @@
   color: #000000;
 }
 
-.login-form-group > input:focus {
+.login-form-group > input:hover {
   box-shadow: none;
-  border-color: #333333;
+  border-color: #b2e88d;
 }
 
 .login-error {

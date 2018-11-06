@@ -1,33 +1,38 @@
 import React, { Component } from 'react';
-import { Navbar, Nav, NavItem, Image } from 'react-bootstrap';
+import { Navbar, Image } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import * as routes from '../Common/routes';
 
 class TopBar extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+
+    };
+  }
+
   render() {
     return (
       <div>
         <Navbar inverse collapseOnSelect fluid>
           <Navbar.Header>
             <Navbar.Brand>
-              <Image src={require('../../img/Expenyse Horizontal.png')} />
+              <Image src={require('../../img/Expenyse Horizontal (black).png')} />
             </Navbar.Brand>
             <Navbar.Toggle />
           </Navbar.Header>
           <Navbar.Collapse>
-            <Nav pullRight>
-              <NavItem href={routes.LOGIN}>
-                Login
-              </NavItem>
-              <NavItem href={routes.OVERVIEW}>
-                Overview
-              </NavItem>
-              <NavItem href={routes.OVERVIEW}>
-                Month View
-              </NavItem>
-              <NavItem href={routes.OVERVIEW}>
-                Year View
-              </NavItem>
-            </Nav>
+            <ul className="nav navbar-nav navbar-right">
+              <li className="navbar-list">
+                <Link to={routes.LOGIN}>Login</Link>
+              </li>
+              <li className="navbar-list">
+                <Link to={routes.OVERVIEW}>Overview</Link>
+              </li>
+              <li className="navbar-list">
+                <Link to={routes.RECORDS}>Records</Link>
+              </li>
+            </ul>
           </Navbar.Collapse>
         </Navbar>
       </div>

@@ -16,11 +16,7 @@ class Login extends Component {
   }
 
   login = () => {
-    console.log("login!");
     console.log("process.env.PUBLIC_URL=", process.env.PUBLIC_URL);
-    //check connect to firebase
-    //check login if false, return error, if true go to dashboard
-    //go to dashboard
     if (this.state.password === 'Guardian07') {
       this.setState(() => ({
         redirectToReferrer: true
@@ -35,7 +31,7 @@ class Login extends Component {
 
   }
 
-  handleInputChange(event) {
+  handleInputChange = (event) => {
     const value = event.target.value;
     const name = event.target.name;
 
@@ -52,7 +48,7 @@ class Login extends Component {
   }
 
   render() {
-    const { from } = this.props.location.state || { from: { pathname: '/overview' }}
+    const { from } = { from: { pathname: '/overview' }}
     const { redirectToReferrer } = this.state
 
     if (redirectToReferrer === true) {
@@ -64,7 +60,7 @@ class Login extends Component {
         <Grid>
           <Row>
             <Col xs={10} xsPush={1} md={4} mdPush={4}>
-            <Image responsive src={require('../../img/Expenyse Logo (Black) + Text.png')} className="login-logo" />
+            <Image responsive src={require('../../img/Expenyse Logo (Green) + Text.png')} className="login-logo" />
             <Form>
               <FormGroup className="login-form-group">
                 <ControlLabel>USERNAME</ControlLabel>
