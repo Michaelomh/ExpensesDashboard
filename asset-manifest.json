@@ -1,15 +1,15 @@
 {
-  "main.css": "/ExpensesDashboard/static/css/main.d398cccd.chunk.css",
-  "main.js": "/ExpensesDashboard/static/js/main.8da3cba0.chunk.js",
-  "main.js.map": "/ExpensesDashboard/static/js/main.8da3cba0.chunk.js.map",
-  "static/js/1.2819eb5a.chunk.js": "/ExpensesDashboard/static/js/1.2819eb5a.chunk.js",
-  "static/js/1.2819eb5a.chunk.js.map": "/ExpensesDashboard/static/js/1.2819eb5a.chunk.js.map",
+  "main.css": "/ExpensesDashboard/static/css/main.98207f9a.chunk.css",
+  "main.js": "/ExpensesDashboard/static/js/main.689cd0bf.chunk.js",
+  "main.js.map": "/ExpensesDashboard/static/js/main.689cd0bf.chunk.js.map",
+  "static/js/1.9b8cc77e.chunk.js": "/ExpensesDashboard/static/js/1.9b8cc77e.chunk.js",
+  "static/js/1.9b8cc77e.chunk.js.map": "/ExpensesDashboard/static/js/1.9b8cc77e.chunk.js.map",
   "runtime~main.js": "/ExpensesDashboard/static/js/runtime~main.4f1e4ffc.js",
   "runtime~main.js.map": "/ExpensesDashboard/static/js/runtime~main.4f1e4ffc.js.map",
-  "static/css/main.d398cccd.chunk.css.map": "/ExpensesDashboard/static/css/main.d398cccd.chunk.css.map",
+  "static/css/main.98207f9a.chunk.css.map": "/ExpensesDashboard/static/css/main.98207f9a.chunk.css.map",
   "static/media/Expenyse Logo (Green) + Text.png": "/ExpensesDashboard/static/media/Expenyse Logo (Green) + Text.30b1d712.png",
-  "static/media/Expenyse Horizontal.png": "/ExpensesDashboard/static/media/Expenyse Horizontal.d8f57cb3.png",
+  "static/media/Expenyse Horizontal (black).png": "/ExpensesDashboard/static/media/Expenyse Horizontal (black).f199788c.png",
   "index.html": "/ExpensesDashboard/index.html",
-  "precache-manifest.aeb81ec997681deff7a7497205c62ec0.js": "/ExpensesDashboard/precache-manifest.aeb81ec997681deff7a7497205c62ec0.js",
+  "precache-manifest.08af446b286bbd209c530592c0e26d1d.js": "/ExpensesDashboard/precache-manifest.08af446b286bbd209c530592c0e26d1d.js",
   "service-worker.js": "/ExpensesDashboard/service-worker.js"
 }
