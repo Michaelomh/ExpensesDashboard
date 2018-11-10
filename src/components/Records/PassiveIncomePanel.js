@@ -1,18 +1,33 @@
 import React, { Component } from 'react';
-import { Table } from 'react-bootstrap';
+import { Table, Glyphicon, Modal } from 'react-bootstrap';
+import RecordsModal from './RecordsModal';
 
 class PassiveIncomePanel extends Component {
   constructor(props) {
     super(props);
     this.state = {
-
+        showRecordsModal: false
     };
+
+    this.showRecordsModal = this.showRecordsModal.bind(this);
+    this.handleClose = this.handleClose.bind(this);
+  }
+
+  handleClose() {
+    this.setState({ showRecordsModal: false });
+  }
+
+  showRecordsModal() {
+    this.setState({ showRecordsModal: true });
   }
 
   render() {
     return (
       <div className="passive-panel record-panel">
-        <h1>Passive Income Records</h1>
+          <h1>
+            Passive Income Records
+            <Glyphicon glyph="plus" className="pull-right" onClick={this.showRecordsModal}/>
+          </h1>
         <div className="record-table">
           <Table condensed hover responsive>
             <thead>
@@ -46,6 +61,12 @@ class PassiveIncomePanel extends Component {
             </tbody>
           </Table>
         </div>
+
+        <RecordsModal
+          show={this.state.showRecordsModal}
+          handleClose = {this.handleClose}
+        />
+
       </div>
     )
   }

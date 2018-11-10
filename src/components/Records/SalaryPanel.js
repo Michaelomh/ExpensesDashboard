@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Table } from 'react-bootstrap';
+import { Table, Glyphicon } from 'react-bootstrap';
 
 class SalaryPanel extends Component {
   constructor(props) {
@@ -12,7 +12,10 @@ class SalaryPanel extends Component {
   render() {
     return (
       <div className="active-panel record-panel">
-        <h1>Salary Records</h1>
+        <h1>
+        Salary Records
+        <Glyphicon glyph="plus" className="pull-right"/>
+        </h1>
         <div className="record-table">
           <Table condensed hover responsive>
             <thead>

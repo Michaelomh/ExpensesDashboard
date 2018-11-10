@@ -28,7 +28,6 @@ class Login extends Component {
         showError: 'block'
       }))
     }
-
   }
 
   handleInputChange = (event) => {
