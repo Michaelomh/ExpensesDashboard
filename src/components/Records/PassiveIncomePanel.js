@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Table, Glyphicon, Modal } from 'react-bootstrap';
+import { Table, Glyphicon } from 'react-bootstrap';
 import RecordsModal from './RecordsModal';
 
 class PassiveIncomePanel extends Component {
@@ -14,10 +14,12 @@ class PassiveIncomePanel extends Component {
   }
 
   handleClose() {
+    document.getElementById("root").style.filter = "blur(0px)";
     this.setState({ showRecordsModal: false });
   }
 
   showRecordsModal() {
+    document.getElementById("root").style.filter = "blur(5px)";
     this.setState({ showRecordsModal: true });
   }
 
@@ -65,6 +67,9 @@ class PassiveIncomePanel extends Component {
         <RecordsModal
           show={this.state.showRecordsModal}
           handleClose = {this.handleClose}
+          dbToConnect = 'PassiveIncome'
+          salary = {4000}
+          notes = 'Salary'
         />
 
       </div>

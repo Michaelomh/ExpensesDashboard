@@ -5,6 +5,8 @@
   background: #7ddd8e;
   background: -webkit-linear-gradient(135deg, #7ddd8e, #2956b1, #792484);
   background: linear-gradient(135deg, #7ddd8e, #2956b1, #792484);
+  -webkit-transition: width 0.75s, height 0.75s, -webkit-transform 0.75s; /* Safari */
+  transition: width 0.75s, height 0.75s, transform 0.75s;
 }
 /*===================COMMON END====================*/
 
@@ -72,7 +74,7 @@
   border-bottom: 2px solid #333333;
 }
 
-.control-label {
+.login-form-group > .control-label {
   margin-bottom: 0px;
   color: #aeff77;
   letter-spacing: 2px;
