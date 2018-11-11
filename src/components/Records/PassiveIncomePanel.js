@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import { Table, Glyphicon } from 'react-bootstrap';
 import RecordsModal from './RecordsModal';
+import RecordsRow from './RecordsRow';
 
 class PassiveIncomePanel extends Component {
   constructor(props) {
     super(props);
     this.state = {
-        showRecordsModal: false
+        showRecordsModal: false,
+        passiveIncomeData: []
     };
 
     this.showRecordsModal = this.showRecordsModal.bind(this);
@@ -21,9 +23,14 @@ class PassiveIncomePanel extends Component {
   showRecordsModal() {
     document.getElementById("root").style.filter = "blur(5px)";
     this.setState({ showRecordsModal: true });
+    console.log(this.state.passiveIncomeData);
   }
 
+
+
   render() {
+    let { passiveIncomeData } = this.props;
+
     return (
       <div className="passive-panel record-panel">
           <h1>
@@ -40,26 +47,17 @@ class PassiveIncomePanel extends Component {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>Sep-2018</td>
-                <td>$0.00</td>
-                <td>-</td>
-              </tr>
-              <tr>
-                <td>Oct-2018</td>
-                <td>$12.00</td>
-                <td>Bank Interest</td>
-              </tr>
-              <tr>
-                <td>Nov-2018</td>
-                <td>$53.00</td>
-                <td>Fx Earnings</td>
-              </tr>
-              <tr>
-                <td>Nov-2018</td>
-                <td>$12.28</td>
-                <td>Bank Interest</td>
-              </tr>
+                {
+                  passiveIncomeData.map((item,i) => {
+                     return(
+                       <tr key={i}>
+                         <td>{item.monthyear}</td>
+                         <td>{item.amount}</td>
+                         <td>{item.notes}</td>
+                       </tr>
+                     );
+                  })
+                }
             </tbody>
           </Table>
         </div>
@@ -68,8 +66,6 @@ class PassiveIncomePanel extends Component {
           show={this.state.showRecordsModal}
           handleClose = {this.handleClose}
           dbToConnect = 'PassiveIncome'
-          salary = {4000}
-          notes = 'Salary'
         />
 
       </div>

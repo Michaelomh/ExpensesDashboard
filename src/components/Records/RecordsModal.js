@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Modal, Form, ControlLabel,FormGroup, Button, FormControl, Col, Row,Glyphicon } from 'react-bootstrap';
+import { Modal, Form, ControlLabel,FormGroup, FormControl, Col, Row,Glyphicon } from 'react-bootstrap';
+import { toast } from 'react-toastify';
 import firebase from '../../firebase/Firebase';
 
 class RecordsModal extends Component {
@@ -12,7 +13,6 @@ class RecordsModal extends Component {
         amount: 0,
         notes: '',
     };
-
       this.handleInputChange = this.handleInputChange.bind(this);
   }
 
@@ -26,18 +26,32 @@ class RecordsModal extends Component {
   }
 
   submitNewRecord = () => {
-    // const db = firebase.firestore();
-    // db.settings({ timestampsInSnapshots: true });
-    // db.collection(this.props.dbToConnect).add({
-    //   monthyear: this.state.month + "-" + this.state.year,
-    //   amount: this.state.amount,
-    //   notes: this.state.notes
-    // });
-    console.log(this.state);
+    //setup
+    const db = firebase.firestore();
+    db.settings({ timestampsInSnapshots: true });
 
-    //reset
-    this.setDate();
-    this.setActiveIncome();
+    //adding to firebase
+    db.collection(this.props.dbToConnect).add({
+      monthyear: this.state.month + "-" + this.state.year,
+      amount: parseInt(this.state.amount),
+      notes: this.state.notes
+    }).then((snapshot) => {
+      //successful submission of records
+      toast.success('Record submiited to database', {
+        position: "bottom-right",
+        autoClose: 3000
+      });
+
+      //reset fields accordingly
+      this.setDate();
+      this.setActiveIncome();
+    }).catch((error) => {
+      //catching error
+      toast.error('An error has occured, please try again later', {
+        position: "bottom-right",
+        autoClose: false
+      });
+    });
   }
 
   componentWillMount = () => {
@@ -50,6 +64,11 @@ class RecordsModal extends Component {
       this.setState({
         amount: (this.props.salary),
         notes: this.props.notes
+      });
+    } else {
+      this.setState({
+        amount: 0,
+        notes: ''
       });
     }
   }
@@ -65,12 +84,15 @@ class RecordsModal extends Component {
 
   render() {
     return (
+      <div>
       <Modal show={this.props.show} onHide={this.props.handleClose} bsSize='sm'>
         <Modal.Header>
           <Modal.Title>
             Add Record
           </Modal.Title>
-          <span className="modal-subtitle">for passive income</span>
+          <span className="modal-subtitle">
+            {this.props.dbToConnect==="ActiveIncome" ? "for active income" : "for passive income"}
+          </span>
         </Modal.Header>
         <Modal.Body>
           <Form>
@@ -114,6 +136,8 @@ class RecordsModal extends Component {
 
             </FormGroup>
           </Form>
+
+
         </Modal.Body>
         <Modal.Footer>
           <div id="record-modal-close" onClick={this.props.handleClose}>
@@ -123,10 +147,12 @@ class RecordsModal extends Component {
             <Glyphicon glyph="plus" /> SUBMIT
           </div>
         </Modal.Footer>
+
+
       </Modal>
+      </div>
     )
   }
 }
-
 
 export default RecordsModal;

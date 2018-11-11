@@ -8,6 +8,29 @@
   -webkit-transition: width 0.75s, height 0.75s, -webkit-transform 0.75s; /* Safari */
   transition: width 0.75s, height 0.75s, transform 0.75s;
 }
+
+.Toastify__toast--success {
+  background: #47c75e;
+  color: #ffffff;
+}
+
+.Toastify__toast {
+  text-transform: uppercase;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-weight: bold;
+  letter-spacing: 2px;
+  padding-left: 25px;
+  font-size: 1.5rem;
+}
+
+.Toastify__toast-body {
+  z-index: 9999;
+}
+
+.Toastify__progress-bar {
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9998;
+}
 /*===================COMMON END====================*/
 
 /*===================TOPBAR START====================*/

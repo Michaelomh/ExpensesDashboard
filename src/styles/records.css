@@ -165,4 +165,10 @@
   background-color: #3187ce;
 }
 
+.record-toastrContainer {
+  z-index: 1040 !important;
+  position: absolute;
+  bottom: 50px;
+  right: 50px;
+}
 /*===================MODAL END====================*/
