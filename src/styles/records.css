@@ -34,6 +34,10 @@
   background-color: rgba(27, 27, 27, 0.3) !important;
 }
 
+.hidden {
+  display:none;
+}
+
 /*===================COMMON END====================*/
 /*===================RECORDS FILTER START====================*/
 .record-filter-container {

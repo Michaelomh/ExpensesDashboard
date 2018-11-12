@@ -8,7 +8,6 @@ class PassiveIncomePanel extends Component {
     super(props);
     this.state = {
         showRecordsModal: false,
-        passiveIncomeData: []
     };
 
     this.showRecordsModal = this.showRecordsModal.bind(this);
@@ -23,10 +22,7 @@ class PassiveIncomePanel extends Component {
   showRecordsModal() {
     document.getElementById("root").style.filter = "blur(5px)";
     this.setState({ showRecordsModal: true });
-    console.log(this.state.passiveIncomeData);
   }
-
-
 
   render() {
     let { passiveIncomeData } = this.props;
@@ -47,17 +43,14 @@ class PassiveIncomePanel extends Component {
               </tr>
             </thead>
             <tbody>
-                {
-                  passiveIncomeData.map((item,i) => {
-                     return(
-                       <tr key={i}>
-                         <td>{item.monthyear}</td>
-                         <td>{item.amount}</td>
-                         <td>{item.notes}</td>
-                       </tr>
-                     );
-                  })
-                }
+              {passiveIncomeData.map(data => (
+                <RecordsRow
+                  key={data.monthyear + '-' + data.amount + '-' + data.notes}
+                  monthyear = {data.monthyear}
+                  amount = {data.amount}
+                  notes = {data.notes}
+                />
+              ))}
             </tbody>
           </Table>
         </div>

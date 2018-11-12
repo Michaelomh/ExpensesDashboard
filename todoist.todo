@@ -1,14 +1,10 @@
 Overall:
-  ☐ Firebase connection - table
   ☐ Firebase Authentication on Login Page
   ☐ Know what to build for overview
   ☐ Make background-fixed
-  ☐
 
 Records:
   ☐ On mobile, only check one at a time (Expense, Active, Passive)
-  ☐ Adding new Passive Income via firebase
-  ☐ Adding new Active Income via firebase
   ☐ Update new Passive Income via Firebase
   ☐ Update new Active Income via Firebase
   ☐ Delete new Passive Income via Firebase

@@ -16,7 +16,6 @@ class Login extends Component {
   }
 
   login = () => {
-    console.log("process.env.PUBLIC_URL=", process.env.PUBLIC_URL);
     if (this.state.password === 'Guardian07') {
       this.setState(() => ({
         redirectToReferrer: true

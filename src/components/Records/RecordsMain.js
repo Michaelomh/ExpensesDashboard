@@ -14,7 +14,10 @@ class RecordsMain extends Component {
     super(props);
     this.state = {
         activeIncome: [],
-        passiveIncome: []
+        passiveIncome: [],
+        showExpenses: true,
+        showActive: true,
+        showPassive: true
     };
   }
 
@@ -22,45 +25,54 @@ class RecordsMain extends Component {
     const db = firebase.firestore();
     db.settings({ timestampsInSnapshots: true });
 
-    //get all passive Income
-    db.collection('ActiveIncome').get().then((snap) => {
-      snap.docs.forEach(record => {
-        //populate passive income fields
-        console.log(record.data());
-        this.state.activeIncome.push(record.data());
-      })
-    })
-    .finally(() => {
-      console.log("Finally happened - active;");
-    });
-
-    //get all active Income
+    //get all passive and active Income
     db.collection('PassiveIncome').get()
     .then((snap) => {
       snap.docs.forEach(record => {
-        //populate active income field
-        console.log(record.data());
-        this.state.passiveIncome.push(record.data());
+        //populate passive income field
+        this.setState(prevState => ({
+          passiveIncome: [...prevState.passiveIncome, record.data()]
+        }))
       })
     })
     .finally(() => {
-      console.log("Finally happened - passive;");
+      db.collection('ActiveIncome').get().then((snap) => {
+        snap.docs.forEach(record => {
+          //populate active income fields
+          this.setState(prevState => ({
+            activeIncome: [...prevState.activeIncome, record.data()]
+          }))
+        })
+      })
     });
   }
+
+  handleClick(targetVal) {
+    console.log(targetVal);
+    // this.setState({
+    //   inputValue: event.target.value
+    // });
+  };
 
   render() {
     return (
       <div>
         <TopBar />
         <div className="container-fluid">
-          <RecordsFilter />
+          <div>
+            <RecordsFilter handleClick={this.handleClick}/>
+          </div>
           <div className="record-container">
-            <ExpensesPanel />
+            <ExpensesPanel
+              className={this.state.showExpenses ? 'hidden' : ''}
+            />
             <ActiveIncomePanel
               activeIncomeData = {this.state.activeIncome}
+              className={this.state.showActive ? 'hidden' : ''}
             />
             <PassiveIncomePanel
               passiveIncomeData = {this.state.passiveIncome}
+              className={this.state.showPassive ? 'hidden' : ''}
             />
           </div>
         </div>

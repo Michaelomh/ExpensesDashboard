@@ -19,7 +19,6 @@ class RecordsModal extends Component {
   handleInputChange = (event) => {
     const value = event.target.value;
     const name = event.target.name;
-    // console.log(name , value);
     this.setState({
       [name]: value
     });

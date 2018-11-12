@@ -24,6 +24,8 @@ class ActiveIncomePanel extends Component {
   }
 
   render() {
+    let { activeIncomeData } = this.props;
+
     return (
       <div className="active-panel record-panel">
         <h1>
@@ -40,21 +42,14 @@ class ActiveIncomePanel extends Component {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>Sep-2018</td>
-                <td>$4000.00</td>
-                <td>Salary</td>
-              </tr>
-              <tr>
-                <td>Oct-2018</td>
-                <td>$4000.00</td>
-                <td>Salary</td>
-              </tr>
-              <tr>
-                <td>Nov-2018</td>
-                <td>$4000.00</td>
-                <td>Salary</td>
-              </tr>
+            {activeIncomeData.map(data => (
+              <RecordsRow
+                key={data.monthyear + '-' + data.amount + '-' + data.notes}
+                monthyear = {data.monthyear}
+                amount = {data.amount}
+                notes = {data.notes}
+              />
+            ))}
             </tbody>
           </Table>
         </div>
