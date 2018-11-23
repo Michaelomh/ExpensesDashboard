@@ -12,23 +12,23 @@ self.__precacheManifest = [
     "url": "/ExpensesDashboard/static/js/runtime~main.4f1e4ffc.js"
   },
   {
-    "revision": "1dbac2951f329d4877c6",
-    "url": "/ExpensesDashboard/static/js/main.1dbac295.chunk.js"
+    "revision": "9c09fd848923b221886e",
+    "url": "/ExpensesDashboard/static/js/main.9c09fd84.chunk.js"
   },
   {
-    "revision": "7a047368aba4f0b9a259",
-    "url": "/ExpensesDashboard/static/js/1.7a047368.chunk.js"
+    "revision": "bc47eb0f128b1b6d812e",
+    "url": "/ExpensesDashboard/static/js/1.bc47eb0f.chunk.js"
   },
   {
-    "revision": "1dbac2951f329d4877c6",
-    "url": "/ExpensesDashboard/static/css/main.9ce1e67c.chunk.css"
+    "revision": "9c09fd848923b221886e",
+    "url": "/ExpensesDashboard/static/css/main.30f60b4d.chunk.css"
   },
   {
-    "revision": "7a047368aba4f0b9a259",
-    "url": "/ExpensesDashboard/static/css/1.6ba7043a.chunk.css"
+    "revision": "bc47eb0f128b1b6d812e",
+    "url": "/ExpensesDashboard/static/css/1.7e3c0c7a.chunk.css"
   },
   {
-    "revision": "e5e5e1c34f5cefdb33de26c4d186b9f6",
+    "revision": "bf10707c6050be1cac964d04ad7f6f0f",
     "url": "/ExpensesDashboard/index.html"
   }
 ];
