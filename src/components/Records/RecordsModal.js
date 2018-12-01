@@ -31,7 +31,7 @@ class RecordsModal extends Component {
 
     //adding to firebase
     db.collection(this.props.dbToConnect).add({
-      monthyear: this.state.month + "-" + this.state.year,
+      monthyear: parseInt(this.convertToEpochSeconds()),
       amount: parseInt(this.state.amount),
       notes: this.state.notes
     }).then((snapshot) => {
@@ -53,6 +53,10 @@ class RecordsModal extends Component {
     });
   }
 
+  convertToEpochSeconds() {
+    return new Date(this.state.year + "-" + this.getMonth(this.state.month) + "-01").getTime() / 1000;
+  }
+
   componentWillMount = () => {
     this.setDate();
     this.setActiveIncome();
@@ -70,6 +74,10 @@ class RecordsModal extends Component {
         notes: ''
       });
     }
+  }
+
+  getMonth(monthStr){
+    return new Date(monthStr+'-1-01').getMonth()+1
   }
 
   setDate = () => {
@@ -126,12 +134,12 @@ class RecordsModal extends Component {
               <ControlLabel>AMOUNT</ControlLabel>
               <FormControl name="amount" type="number" className="record-input" value={this.state.amount}
                 onChange={this.handleInputChange}
-                />
+              />
 
               <ControlLabel>NOTES</ControlLabel>
               <FormControl name="notes" type="text" className="record-input" value={this.state.notes}
                 onChange={this.handleInputChange}
-                />
+              />
 
             </FormGroup>
           </Form>

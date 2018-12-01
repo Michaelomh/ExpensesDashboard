@@ -65,10 +65,18 @@
   flex: 1;
 }
 
+.active-panel > h1 > .glyphicon-plus {
+  cursor: pointer;
+}
+
 /*===================ACTIVEINCOME PANEL END====================*/
 /*===================PASSIVEINCOME PANEL START====================*/
 .passive-panel {
   flex: 1;
+}
+
+.passive-panel > h1 > .glyphicon-plus {
+  cursor: pointer;
 }
 
 /*===================PASSIVEINCOME PANEL END====================*/

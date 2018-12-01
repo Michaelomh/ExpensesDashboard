@@ -16,6 +16,7 @@ class ActiveIncomePanel extends Component {
   handleClose() {
     document.getElementById("root").style.filter = "blur(0px)";
     this.setState({ showRecordsModal: false });
+    this.props.handleClose(this.props.panelType);
   }
 
   showRecordsModal() {
@@ -45,7 +46,7 @@ class ActiveIncomePanel extends Component {
             {activeIncomeData.map(data => (
               <RecordsRow
                 key={data.monthyear + '-' + data.amount + '-' + data.notes}
-                monthyear = {data.monthyear}
+                monthyear = {data.monthyear.seconds}
                 amount = {data.amount}
                 notes = {data.notes}
               />
@@ -56,8 +57,8 @@ class ActiveIncomePanel extends Component {
 
         <RecordsModal
           show={this.state.showRecordsModal}
-          handleClose = {this.handleClose}
-          dbToConnect = 'ActiveIncome'
+          handleClose = {this.handleClose.bind(this)}
+          dbToConnect = {this.props.panelType}
           salary = {4000}
           notes = 'Salary'
         />

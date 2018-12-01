@@ -7,6 +7,7 @@
   background: linear-gradient(135deg, #7ddd8e, #2956b1, #792484);
   -webkit-transition: width 0.75s, height 0.75s, -webkit-transform 0.75s; /* Safari */
   transition: width 0.75s, height 0.75s, transform 0.75s;
+  overflow: auto;
 }
 
 .Toastify__toast--success {

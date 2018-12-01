@@ -1,7 +1,6 @@
 Overall:
   ☐ Firebase Authentication on Login Page
   ☐ Know what to build for overview
-  ☐ Make background-fixed
 
 Records:
   ☐ On mobile, only check one at a time (Expense, Active, Passive)
@@ -9,5 +8,4 @@ Records:
   ☐ Update new Active Income via Firebase
   ☐ Delete new Passive Income via Firebase
   ☐ Delete new Active Income via Firebase
-  ☐ Add in proper event handling for Records
   ☐ Break the record into individual components

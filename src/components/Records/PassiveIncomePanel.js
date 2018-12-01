@@ -17,6 +17,7 @@ class PassiveIncomePanel extends Component {
   handleClose() {
     document.getElementById("root").style.filter = "blur(0px)";
     this.setState({ showRecordsModal: false });
+    this.props.handleClose(this.props.panelType);
   }
 
   showRecordsModal() {
@@ -58,7 +59,7 @@ class PassiveIncomePanel extends Component {
         <RecordsModal
           show={this.state.showRecordsModal}
           handleClose = {this.handleClose}
-          dbToConnect = 'PassiveIncome'
+          dbToConnect = {this.props.panelType}
         />
 
       </div>
