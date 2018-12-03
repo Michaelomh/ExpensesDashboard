@@ -32,6 +32,9 @@ class TopBar extends Component {
               <li className="navbar-list">
                 <Link to={routes.RECORDS}>Records</Link>
               </li>
+              <li className="navbar-list">
+                <Link to={routes.ADD}>Add</Link>
+              </li>
             </ul>
           </Navbar.Collapse>
         </Navbar>

@@ -10,9 +10,20 @@ class Login extends Component {
       password: 'Guardian07',
       redirectToReferrer: false,
       showError: 'None',
-      errorMsg: ''
+      errorMsg: '',
+      mobile: false
     };
     this.handleInputChange = this.handleInputChange.bind(this);
+  }
+
+  componentDidMount() {
+    console.log(window.innerWidth);
+    if (window.innerWidth <= 480) {
+      this.setState(() => ({
+        redirectToReferrer: true,
+        mobile: true
+      }))
+    }
   }
 
   login = () => {
@@ -21,7 +32,6 @@ class Login extends Component {
         redirectToReferrer: true
       }))
     } else {
-
       this.setState(() => ({
         errorMsg: 'Incorrect Username/Password',
         showError: 'block'
@@ -46,10 +56,13 @@ class Login extends Component {
   }
 
   render() {
-    const { from } = { from: { pathname: '/overview' }}
-    const { redirectToReferrer } = this.state
+    const { redirectToReferrer, mobile } = this.state
 
-    if (redirectToReferrer === true) {
+    if (redirectToReferrer === true && mobile === false) {
+      const { from } = { from: { pathname: '/overview' }}
+      return <Redirect to={from} />
+    } else if (redirectToReferrer === true && mobile === true) {
+      const { from } = { from: { pathname: '/add' }}
       return <Redirect to={from} />
     }
 

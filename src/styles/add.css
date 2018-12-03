@@ -1,0 +1,127 @@
+/* COMMON STYLES */
+.Add-Container {
+    height: 100vh;
+    background-color: #ffffff;
+    padding: 15px;
+    padding-top: 25px;
+}
+
+.add-row {
+    font-family: 'Roboto Condensed', sans-serif;
+    margin-right: 0px;
+    margin-left: 0px;
+}
+
+.btn {
+    width: 100%;
+}
+
+.form-control {
+    height: 100%;
+    text-align: center;
+    font-weight: bold;
+    border: none;
+    background-color: transparent;
+    font-size: 2em;
+    border-radius: 0px;
+}
+
+.form-control:hover {
+    text-align: center;
+    border: none;
+    background-color: transparent;
+}
+
+.form-control:focus {
+    box-shadow: none;
+    border-bottom: 2px solid green;
+}
+
+
+/* TITLE STYLES */
+.add-row-title {
+    height: 6vh;
+    text-align: center;
+}
+
+.add-row-title > h1 {
+    margin: 0px;
+    font-weight: bold;
+}
+
+/* MAIN STYLES */
+.add-row-mainRow {
+    height: 15vh;
+    background-color: #27ae60;
+    color: #ffffff;
+    border-radius: 5px;
+    margin: 0px 5px 15px 5px;
+}
+
+.add-row-mainRow > .col-xs-9 {
+    height: 100%;
+    text-align: right;
+}
+
+#transaction-amt{
+    font-weight: bold;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 4em;
+    line-height: 3em;
+}
+
+/* DESCRIPTION + TIMESTAMPE STYLES */
+.add-row-form {
+    height: 6vh;
+}
+
+/* CATEGORIES STYLES */
+.add-row-category {
+    height: 8vh;
+}
+
+.add-row-category > .col-xs-4 {
+    padding: 5px 5px 0px 5px;
+    height: 100%;
+}
+
+
+.btn-active,
+.btn-active:hover,
+.btn-active:active,
+.btn-active:focus {
+    color: #fff !important;
+    background-color: #27ae60 !important;
+    border-color: #27ae60 !important;
+    box-shadow: none !important;
+}
+
+.btn-outline-secondary {
+    color: #27ae60;
+    background-color: transparent;
+    background-image: none;
+    border: 2px solid #27ae60;
+    border-radius: 5px;
+}
+
+/* CALCULATOR STYLES */
+
+.add-row-calculator {
+    height: 11vh;
+    text-align: center;
+}
+
+.add-row-calculator > div {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 2.5em;
+    line-height: 82px;
+    margin: 0px;
+    font-weight: bold;
+}
+
+.add-row-templates {
+    height: 30vh;
+    overflow-y: scroll;
+    margin-top: 20px;
+    padding-right: 15px;
+}
