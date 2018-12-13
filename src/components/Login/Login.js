@@ -11,25 +11,17 @@ class Login extends Component {
       redirectToReferrer: false,
       showError: 'None',
       errorMsg: '',
-      mobile: false
+      toRedirect: ''
     };
-    this.handleInputChange = this.handleInputChange.bind(this);
-  }
 
-  componentDidMount() {
-    console.log(window.innerWidth);
-    if (window.innerWidth <= 480) {
-      this.setState(() => ({
-        redirectToReferrer: true,
-        mobile: true
-      }))
-    }
+    this.handleInputChange = this.handleInputChange.bind(this);
   }
 
   login = () => {
     if (this.state.password === 'Guardian07') {
       this.setState(() => ({
-        redirectToReferrer: true
+        redirectToReferrer: true,
+        toRedirect: '/overview'
       }))
     } else {
       this.setState(() => ({
@@ -39,9 +31,16 @@ class Login extends Component {
     }
   }
 
-  handleInputChange = (event) => {
-    const value = event.target.value;
-    const name = event.target.name;
+  addTransactionHandle = () => {
+    this.setState(() => ({
+      redirectToReferrer: true,
+      toRedirect: '/add'
+    }))
+  }
+
+  handleInputChange = (e) => {
+    const value = e.target.value;
+    const name = e.target.name;
 
     this.setState({
       [name]: value
@@ -56,22 +55,19 @@ class Login extends Component {
   }
 
   render() {
-    const { redirectToReferrer, mobile } = this.state
+    const { redirectToReferrer } = this.state
+    const { from } = { from: { pathname: this.state.toRedirect }}
 
-    if (redirectToReferrer === true && mobile === false) {
-      const { from } = { from: { pathname: '/overview' }}
+    if (redirectToReferrer === true) {
       return <Redirect to={from} />
-    } else if (redirectToReferrer === true && mobile === true) {
-      const { from } = { from: { pathname: '/add' }}
-      return <Redirect to={from} />
-    }
+    } 
 
     return (
       <div className="login-container">
         <Grid>
           <Row>
             <Col xs={10} xsPush={1} md={4} mdPush={4}>
-            <Image responsive src={require('../../img/Expenyse Logo (Green) + Text.png')} className="login-logo" />
+            <Image responsive src={require('../../img/Expenyse Logo (Green) + Text.png')} className="login-logo" onClick={this.addTransactionHandle}/>
             <Form>
               <FormGroup className="login-form-group">
                 <ControlLabel>USERNAME</ControlLabel>

@@ -19,15 +19,12 @@ class AddTransaction extends Component {
   }
 
   moveToOverview = () => {
-    console.log("move to Overview");
     this.setState(() => ({
       moveToOverview: true
     }))
   }
 
   componentWillMount= () => {
-    console.log("component will mount");
-
     //populate date
     let today = new Date();
     let day = (today.getDate() < 10 ? '0' + today.getDate() : today.getDate());
