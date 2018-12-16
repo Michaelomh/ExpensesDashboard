@@ -10,14 +10,16 @@ class AddTransaction extends Component {
     this.state = {
       date: '',
       time: '',
-      amount: '',
       description: '',
       category: '',
       moveToOverview: false,
-      currentAmt: 0
+      currentAmt: 0,
+      fontSize: '4em', 
+      lineHeight: '3em'
     };
   }
 
+  //Misc Functions
   moveToOverview = () => {
     this.setState(() => ({
       moveToOverview: true
@@ -35,11 +37,12 @@ class AddTransaction extends Component {
     let minute = (today.getMinutes() < 10 ? '0' + today.getMinutes() : today.getMinutes());
 
     this.setState({
-      date: day + "/" + month,
-      time: hour + ":" + minute,
+      date: day + '/' + month,
+      time: hour + ':' + minute,
     });
   }
 
+  //Handling Function
   handleInputChange = (event) => {
     const value = event.target.value;
     const name = event.target.name;
@@ -48,12 +51,29 @@ class AddTransaction extends Component {
       [name]: value
     });
   }
+  
+  handleCategory = (event) => {
+    let category = event.target.id;
+    this.setState(() => ({
+      category: category
+    }))
+
+    var els = document.querySelectorAll('.btn-outline-secondary')
+    //remove btn-active classname
+    els.forEach(function(entry) {
+      entry.classList.remove('btn-active');
+    });
+    
+    //add btn-active to classname
+    event.target.classList.add('btn-active');
+
+  }
 
   handleCalculator = (event) => {
     let { currentAmt } = this.state;
     let char = event.target.id[event.target.id.length - 1];
-    console.log(char)
-    console.log(currentAmt);
+    // console.log(char)
+    // console.log(currentAmt);
 
     if (char === 'l') {
         //delete
@@ -69,9 +89,8 @@ class AddTransaction extends Component {
     } else if (char === 't') {
         //add a dot
         //if dot exist, ignore
-        if (!currentAmt.includes(".")) {
+        if (!currentAmt.toString().includes(".")) {
             if (currentAmt.length === 0) {
-                console.log("hit - " + "0" + currentAmt + ".")
                 this.setState(() => ({
                   currentAmt: "0" + this.state.currentAmt + "."
                 }))
@@ -86,7 +105,7 @@ class AddTransaction extends Component {
         //if there are more than 2 decimal point, ignore.
         //if the first digit is 0, without a dot, remove the 0
         if (currentAmt.toString().substr(currentAmt.toString().indexOf("."), currentAmt.length - 1).length > 2) {
-          console.log("too much decimals");
+          // console.log("too much decimals");
         } else if (currentAmt.toString().substr(0, 1) === "0" && !currentAmt.toString().includes(".")) {
           this.setState(() => ({
             currentAmt: this.state.currentAmt.toString().substr(1, this.state.currentAmt.length) + char
@@ -103,32 +122,105 @@ class AddTransaction extends Component {
     //change settings accordingly.
     let newCurrentAmt = this.state.currentAmt;
 
-    if (newCurrentAmt.length > 9) {
+    if (newCurrentAmt.length === 9) {
         //cut down, error
-        console.log("Error hit");
-        this.setState(() => ({
-          currentAmt: this.state.currentAmt.toString().substr(0, this.state.currentAmt.length - 1)
-        }))
+        if (char === 'l') {
+          this.setState(() => ({
+            currentAmt: this.state.currentAmt.toString().substr(0, this.state.currentAmt.length - 1)
+          }))
+        } else {
+          this.setState(() => ({
+            currentAmt: newCurrentAmt
+          }))
+        }
     } else if (newCurrentAmt.length > 6) {
         //make it smaller
-          // $("#transaction-amt").css("font-size", "3em");
-          // $("#transaction-amt").css("line-height", "4.5em");
-          console.log("make it smaller");
+          this.setState(() => ({
+            fontSize: '3.5em',
+            lineHeight: '3.5em'
+          }))
     } else {
         //make it bigger
-        // $("#transaction-amt").css("font-size", "4em");
-        // $("#transaction-amt").css("line-height", "3em");
-        console.log("make it bigger");
+        this.setState(() => ({
+          fontSize: '4em',
+          lineHeight: '3em'
+        }))
     }
 
   }
 
   handleAddingTransaction = () => {
-    console.log("adding transaction");
-    toast.success('Record submiited to database', {
+    console.log(this.state.date, this.state.time, this.state.currentAmt, this.state.description, this.state.category);
+    toast.success('Record submitted to database', {
       position: "bottom-right",
       autoClose: 3000
     });
+  }
+
+  handleTemplate = (event) => {
+    let templateSelected = parseInt(event.target.id.substr(event.target.id.length-1,3));
+
+    switch (templateSelected) {
+      case 1:
+        //coffee template
+        this.setState(() => ({
+          currentAmt: 2,
+          description: 'Coffee',
+          category: 'Food',
+        }))
+        break; 
+      case 2:
+        //Meal template
+        this.setState(() => ({
+          currentAmt: 0,
+          description: 'Meal',
+          category: 'Food',
+        }))
+        break;
+      case 3:
+        //blank template
+        this.setState(() => ({
+          currentAmt: 0,
+          description: '',
+          category: 'Food',
+        }))
+        break;
+      case 4:
+        //blank template
+        this.setState(() => ({
+          currentAmt: 0,
+          description: '',
+          category: 'Food',
+        }))
+        break;
+      case 5:
+        //blank template
+        this.setState(() => ({
+          currentAmt: 0,
+          description: '',
+          category: 'Food',
+        }))
+        break;
+      case 6:
+        //blank template
+        this.setState(() => ({
+          currentAmt: 0,
+          description: '',
+          category: 'Food',
+        }))
+        break;
+      case 7:
+        //blank template
+        this.setState(() => ({
+          currentAmt: 0,
+          description: '',
+          category: 'Food',
+        }))
+        break;        
+      default: 
+      console.log("error, template not set up yet");
+        break;
+    }
   }
 
   render() {
@@ -156,7 +248,7 @@ class AddTransaction extends Component {
               <h2>SGD</h2>
             </Col>
             <Col xs={9}>  
-              <span id="transaction-amt">{this.state.currentAmt}</span>
+              <span id="transaction-amt" style={{fontSize: this.state.fontSize, lineHeight: this.state.lineHeight}}>{this.state.currentAmt}</span>
             </Col>
           </Row>
 
@@ -179,29 +271,29 @@ class AddTransaction extends Component {
 
           <Row className="add-row-category add-row">
             <Col xs={4}>
-              <Button type="button" className="btn btn-active btn-outline-secondary">Food</Button>
+              <Button type="button" id="Food" className="btn btn-active btn-outline-secondary" onClick={this.handleCategory}>Food</Button>
             </Col>
 
             <Col xs={4}>
-              <Button type="button" className="btn btn-outline-secondary">Transport</Button>
+              <Button type="button" id="Transport" className="btn btn-outline-secondary" onClick={this.handleCategory}>Transport</Button>
             </Col>
 
             <Col xs={4}>
-              <Button type="button" className="btn btn-outline-secondary">Holidays</Button>
+              <Button type="button" id="Holidays" className="btn btn-outline-secondary" onClick={this.handleCategory}>Holidays</Button>
             </Col>
           </Row>
 
         <Row className="add-row-category add-row">
             <Col xs={4}>
-              <Button type="button" className="btn btn-outline-secondary">Activities</Button>
+              <Button type="button" id="Activities" className="btn btn-outline-secondary" onClick={this.handleCategory}>Activities</Button>
             </Col>
 
             <Col xs={4}>
-              <Button type="button" className="btn btn-outline-secondary">Shopping</Button>
+              <Button type="button" id="Shopping" className="btn btn-outline-secondary" onClick={this.handleCategory}>Shopping</Button>
             </Col>
 
             <Col xs={4}>
-              <Button type="button" className="btn btn-outline-secondary">Others</Button>
+              <Button type="button" id="Others" className="btn btn-outline-secondary" onClick={this.handleCategory}>Others</Button>
             </Col>
           </Row>
 
@@ -228,11 +320,15 @@ class AddTransaction extends Component {
                 <Col xs={4} id="calc-del">-</Col>
               </Row>
             </Col>
-            <Col xs={3}>
+            <Col xs={3} style={{paddingLeft: '0px'}}>
               <div className="add-row add-row-templates">
-                <div>T1</div>
-                <div>T2</div>
-                <div>T3</div>
+                <div className="template-box" id="template-1" onClick={this.handleTemplate}>Coffee</div>
+                <div className="template-box" id="template-2" onClick={this.handleTemplate}>Meals</div>
+                <div className="template-box" id="template-3" onClick={this.handleTemplate}>T3</div>
+                <div className="template-box" id="template-4" onClick={this.handleTemplate}>T4</div>
+                <div className="template-box" id="template-5" onClick={this.handleTemplate}>T5</div>
+                <div className="template-box" id="template-6" onClick={this.handleTemplate}>T6</div>
+                <div className="template-box" id="template-7" onClick={this.handleTemplate}>T7</div>
               </div>
               <div className="add-row add-row-calculator">
                 <div onClick={this.handleAddingTransaction}><p id="calc-add">Add</p></div>
