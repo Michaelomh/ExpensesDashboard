@@ -3,6 +3,7 @@ import '../../styles/add.css';
 import { Button, Grid, Col, Row } from 'react-bootstrap';
 import { toast } from 'react-toastify';
 import { Redirect } from 'react-router-dom';
+import firebase from '../../firebase/Firebase';
 
 class AddTransaction extends Component {
   constructor(props) {
@@ -11,7 +12,7 @@ class AddTransaction extends Component {
       date: '',
       time: '',
       description: '',
-      category: '',
+      category: 'Food',
       moveToOverview: false,
       currentAmt: 0,
       fontSize: '4em', 
@@ -27,19 +28,34 @@ class AddTransaction extends Component {
   }
 
   componentWillMount= () => {
-    //populate date
-    let today = new Date();
-    let day = (today.getDate() < 10 ? '0' + today.getDate() : today.getDate());
-    let month = (today.getMonth() + 1 < 10 ? '0' + today.getMonth() + 1 : today.getMonth() + 1);
-
-    //populate time
-    let hour = (today.getHours() < 10 ? '0' + today.getHours() : today.getHours());
-    let minute = (today.getMinutes() < 10 ? '0' + today.getMinutes() : today.getMinutes());
-
     this.setState({
-      date: day + '/' + month,
-      time: hour + ':' + minute,
+      date: this.populateDateTime(true),
+      time: this.populateDateTime(false)
     });
+  }
+
+  populateDateTime(toggleFlag) {
+    let today = new Date();
+
+    //if true, get date, else time
+    if (toggleFlag) {
+      let day = (today.getDate() < 10 ? '0' + today.getDate() : today.getDate());
+      let month = (today.getMonth() + 1 < 10 ? '0' + today.getMonth() + 1 : today.getMonth() + 1);
+      return day + '/' + month
+    } else {
+      let hour = (today.getHours() < 10 ? '0' + today.getHours() : today.getHours());
+      let minute = (today.getMinutes() < 10 ? '0' + today.getMinutes() : today.getMinutes());
+      return hour + ':' + minute
+    }
+  }
+
+  convertToEpochSeconds() {
+    return new Date(new Date().getFullYear(),
+        parseInt(this.state.date.substr(3,2)),
+        parseInt(this.state.date.substr(0,2)),
+        parseInt(this.state.time.substr(3,2)),
+        parseInt(this.state.time.substr(0,2)),
+        0).getTime() / 1000;
   }
 
   //Handling Function
@@ -72,8 +88,6 @@ class AddTransaction extends Component {
   handleCalculator = (event) => {
     let { currentAmt } = this.state;
     let char = event.target.id[event.target.id.length - 1];
-    // console.log(char)
-    // console.log(currentAmt);
 
     if (char === 'l') {
         //delete
@@ -105,7 +119,6 @@ class AddTransaction extends Component {
         //if there are more than 2 decimal point, ignore.
         //if the first digit is 0, without a dot, remove the 0
         if (currentAmt.toString().substr(currentAmt.toString().indexOf("."), currentAmt.length - 1).length > 2) {
-          // console.log("too much decimals");
         } else if (currentAmt.toString().substr(0, 1) === "0" && !currentAmt.toString().includes(".")) {
           this.setState(() => ({
             currentAmt: this.state.currentAmt.toString().substr(1, this.state.currentAmt.length) + char
@@ -150,10 +163,47 @@ class AddTransaction extends Component {
   }
 
   handleAddingTransaction = () => {
-    console.log(this.state.date, this.state.time, this.state.currentAmt, this.state.description, this.state.category);
-    toast.success('Record submitted to database', {
-      position: "bottom-right",
-      autoClose: 3000
+    //firebase settings
+    const db = firebase.firestore();
+    db.settings({ timestampsInSnapshots: true });
+
+    db.collection("Expenses").add({
+      timestamp: parseInt(this.convertToEpochSeconds()),
+      description: this.state.description,
+      category: this.state.category,
+      amount: parseFloat(this.state.currentAmt),
+    }).then((snapshot) => {
+      //successful submission of records
+      toast.success('Record submitted to database', {
+        position: "bottom-right",
+        autoClose: 1500
+      });
+
+      
+      //reset fields
+      this.setState({
+        date: this.populateDateTime(true),
+        time: this.populateDateTime(false),
+        description: '',
+        category: 'Food',
+        currentAmt: 0
+      });
+
+      var btnClassNames = document.querySelectorAll('.btn-outline-secondary');
+      //remove btn-active classname
+      btnClassNames.forEach(function(entry) {
+        if(entry.id === 'Food') {
+          entry.classList.add('btn-active');
+        } else {
+        entry.classList.remove('btn-active');
+        }
+      });
+    }).catch((error) => {
+      //catching error
+      toast.error('An error has occured, please try again later', {
+        position: "bottom-right",
+        autoClose: false
+      });
     });
   }
 

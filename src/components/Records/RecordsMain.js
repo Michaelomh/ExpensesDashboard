@@ -27,6 +27,7 @@ class RecordsMain extends Component {
     //get all passive and active Income
     this.queryPassiveIncome(db);
     this.queryActiveIncome(db);
+    this.queryExpenses(db);
   }
 
   queryActiveIncome(db) {
@@ -54,6 +55,21 @@ class RecordsMain extends Component {
         //populate passive income field
         this.setState(prevState => ({
           passiveIncome: [...prevState.passiveIncome, record.data()]
+        }))
+      })
+    })
+  }
+
+  queryExpenses(db) {
+    this.setState({
+      expenses: []
+    })
+
+    db.collection('Expenses').get().then((snap) => {
+      snap.docs.forEach(record => {
+        //populate active income fields
+        this.setState(prevState => ({
+          expenses: [...prevState.expenses, record.data()]
         }))
       })
     })
@@ -87,6 +103,7 @@ class RecordsMain extends Component {
           </div>
           <div className="record-container">
             <ExpensesPanel
+              expensesData = {this.state.expenses}
               className={this.state.showExpenses ? 'hidden' : ''}
             />
             <ActiveIncomePanel

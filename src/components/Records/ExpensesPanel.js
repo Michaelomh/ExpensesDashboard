@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Table } from 'react-bootstrap';
+import ExpensesRow from './ExpensesRow';
+
 
 class ExpensesPanel extends Component {
   constructor(props) {
@@ -10,6 +12,8 @@ class ExpensesPanel extends Component {
   }
 
   render() {
+    let { expensesData } = this.props;
+
     return (
       <div className="expenses-panel record-panel">
         <h1>Total Expenses</h1>
@@ -17,112 +21,22 @@ class ExpensesPanel extends Component {
           <Table condensed hover responsive>
             <thead>
               <tr>
-                <th>Date Time</th>
+                <th>Timestamp</th>
                 <th>Category</th>
                 <th>Amount</th>
+                <th>Notes</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>05/11/18 20:30</td>
-                <td>Food</td>
-                <td>$3.36</td>
-              </tr>
-              <tr>
-                <td>05/11/18 20:30</td>
-                <td>Food</td>
-                <td>$3.36</td>
-              </tr>
-              <tr>
-                <td>05/11/18 20:30</td>
-                <td>Food</td>
-                <td>$3.36</td>
-              </tr>
-              <tr>
-                <td>05/11/18 20:30</td>
-                <td>Food</td>
-                <td>$3.36</td>
-              </tr>
-              <tr>
-                <td>05/11/18 20:30</td>
-                <td>Food</td>
-                <td>$3.36</td>
-              </tr>
-              <tr>
-                <td>05/11/18 20:30</td>
-                <td>Food</td>
-                <td>$3.36</td>
-              </tr>
-              <tr>
-                <td>05/11/18 20:30</td>
-                <td>Food</td>
-                <td>$3.36</td>
-              </tr>
-              <tr>
-                <td>05/11/18 20:30</td>
-                <td>Food</td>
-                <td>$3.36</td>
-              </tr>
-              <tr>
-                <td>05/11/18 20:30</td>
-                <td>Food</td>
-                <td>$3.36</td>
-              </tr>
-              <tr>
-                <td>05/11/18 20:30</td>
-                <td>Food</td>
-                <td>$3.36</td>
-              </tr>
-              <tr>
-                <td>05/11/18 20:30</td>
-                <td>Food</td>
-                <td>$3.36</td>
-              </tr>
-              <tr>
-                <td>05/11/18 20:30</td>
-                <td>Food</td>
-                <td>$3.36</td>
-              </tr>
-              <tr>
-                <td>05/11/18 20:30</td>
-                <td>Food</td>
-                <td>$3.36</td>
-              </tr>
-              <tr>
-                <td>05/11/18 20:30</td>
-                <td>Food</td>
-                <td>$3.36</td>
-              </tr>
-              <tr>
-                <td>05/11/18 20:30</td>
-                <td>Food</td>
-                <td>$3.36</td>
-              </tr>
-              <tr>
-                <td>05/11/18 20:30</td>
-                <td>Food</td>
-                <td>$3.36</td>
-              </tr>
-              <tr>
-                <td>05/11/18 20:30</td>
-                <td>Food</td>
-                <td>$3.36</td>
-              </tr>
-              <tr>
-                <td>05/11/18 20:30</td>
-                <td>Food</td>
-                <td>$3.36</td>
-              </tr>
-              <tr>
-                <td>05/11/18 20:30</td>
-                <td>Food</td>
-                <td>$3.36</td>
-              </tr>
-              <tr>
-                <td>05/11/18 20:30</td>
-                <td>Food</td>
-                <td>$3.36</td>
-              </tr>
+              {expensesData.map(data => (
+                <ExpensesRow
+                  key={data.timestamp + '-' + data.amount + '-' + data.description + '-' + data.category}
+                  timestamp = {data.timestamp}
+                  amount = {data.amount}
+                  category = {data.category}
+                  notes = {data.description}
+                />
+              ))}
             </tbody>
           </Table>
         </div>
