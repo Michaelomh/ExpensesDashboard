@@ -40,7 +40,7 @@ class AddTransaction extends Component {
     //if true, get date, else time
     if (toggleFlag) {
       let day = (today.getDate() < 10 ? '0' + today.getDate() : today.getDate());
-      let month = (today.getMonth() + 1 < 10 ? '0' + today.getMonth() + 1 : today.getMonth() + 1);
+      let month = (today.getMonth() + 1 < 10 ? '0' + (today.getMonth() + 1) : today.getMonth() + 1);
       return day + '/' + month
     } else {
       let hour = (today.getHours() < 10 ? '0' + today.getHours() : today.getHours());
@@ -51,10 +51,10 @@ class AddTransaction extends Component {
 
   convertToEpochSeconds() {
     return new Date(new Date().getFullYear(),
-        parseInt(this.state.date.substr(3,2)),
+        parseInt(this.state.date.substr(3,2)-1),
         parseInt(this.state.date.substr(0,2)),
-        parseInt(this.state.time.substr(3,2)),
         parseInt(this.state.time.substr(0,2)),
+        parseInt(this.state.time.substr(3,2)),
         0).getTime() / 1000;
   }
 

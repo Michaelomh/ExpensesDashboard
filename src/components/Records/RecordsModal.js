@@ -54,6 +54,7 @@ class RecordsModal extends Component {
   }
 
   convertToEpochSeconds() {
+    console.log(this.state.year + "-" + this.getMonth(this.state.month) + "-01");
     return new Date(this.state.year + "-" + this.getMonth(this.state.month) + "-01").getTime() / 1000;
   }
 
@@ -77,7 +78,8 @@ class RecordsModal extends Component {
   }
 
   getMonth(monthStr){
-    return new Date(monthStr+'-1-01').getMonth()+1
+    const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    return monthNames.indexOf(monthStr)+1< 10 ? '0' + (monthNames.indexOf(monthStr)+1) : monthNames.indexOf(monthStr)+1;
   }
 
   setDate = () => {

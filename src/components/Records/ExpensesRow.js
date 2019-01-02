@@ -2,21 +2,17 @@ import React, { Component } from 'react';
 
 class ExpensesRow extends Component {
   convertSecondsToDate(seconds) {
-    console.log(seconds);
+    const mthNameShort = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
     var d = new Date(0);
     d.setUTCSeconds(seconds);
-    console.log(d);
-    return d.getMonth() + "-" + d.getFullYear();
+    return mthNameShort[d.getMonth()] + "-" + d.getFullYear();
   }
 
-//   <td>05/11/18 20:30</td>
-
   render() {
-    console.log(this.props.timestamp);
 
     return (
       <tr>
-        <td>{this.convertSecondsToDate(this.props.monthyear)}</td>
+        <td>{this.convertSecondsToDate(this.props.timestamp)}</td>
         <td>{this.props.category}</td>
         <td>${this.props.amount}</td>
         <td>{this.props.notes}</td>

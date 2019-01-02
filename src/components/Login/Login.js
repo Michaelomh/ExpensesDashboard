@@ -17,6 +17,16 @@ class Login extends Component {
     this.handleInputChange = this.handleInputChange.bind(this);
   }
 
+  componentDidMount() {
+    console.log(window.innerWidth);
+    if (window.innerWidth <= 480) {
+      this.setState(() => ({
+        redirectToReferrer: true,
+        toRedirect: '/add'
+      }))
+    }
+  }
+
   login = () => {
     if (this.state.password === 'Guardian07') {
       this.setState(() => ({

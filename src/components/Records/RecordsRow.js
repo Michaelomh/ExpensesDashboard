@@ -9,7 +9,6 @@ class RecordsRow extends Component {
   }
 
   render() {
-    console.log(this.props.monthyear + "-----")
     return (
       <tr>
         <td>{this.convertSecondsToDate(this.props.monthyear)}</td>

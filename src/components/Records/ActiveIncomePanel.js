@@ -46,7 +46,7 @@ class ActiveIncomePanel extends Component {
             {activeIncomeData.map(data => (
               <RecordsRow
                 key={data.monthyear + '-' + data.amount + '-' + data.notes}
-                monthyear = {data.monthyear.seconds}
+                monthyear = {data.monthyear}
                 amount = {data.amount}
                 notes = {data.notes}
               />
