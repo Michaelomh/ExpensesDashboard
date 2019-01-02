@@ -1,7 +1,7 @@
 {
   "main.css": "/ExpensesDashboard/static/css/main.9a7332df.chunk.css",
-  "main.js": "/ExpensesDashboard/static/js/main.fcd6cd2e.chunk.js",
-  "main.js.map": "/ExpensesDashboard/static/js/main.fcd6cd2e.chunk.js.map",
+  "main.js": "/ExpensesDashboard/static/js/main.b7eb62c9.chunk.js",
+  "main.js.map": "/ExpensesDashboard/static/js/main.b7eb62c9.chunk.js.map",
   "static/css/1.7e3c0c7a.chunk.css": "/ExpensesDashboard/static/css/1.7e3c0c7a.chunk.css",
   "static/js/1.c9a8c8ca.chunk.js": "/ExpensesDashboard/static/js/1.c9a8c8ca.chunk.js",
   "static/js/1.c9a8c8ca.chunk.js.map": "/ExpensesDashboard/static/js/1.c9a8c8ca.chunk.js.map",
@@ -12,6 +12,6 @@
   "static/media/Expenyse Horizontal (black).png": "/ExpensesDashboard/static/media/Expenyse Horizontal (black).f199788c.png",
   "static/css/1.7e3c0c7a.chunk.css.map": "/ExpensesDashboard/static/css/1.7e3c0c7a.chunk.css.map",
   "index.html": "/ExpensesDashboard/index.html",
-  "precache-manifest.f9a913ecb024cce65ee9919b18516de9.js": "/ExpensesDashboard/precache-manifest.f9a913ecb024cce65ee9919b18516de9.js",
+  "precache-manifest.d46aa9c0438d6c50dd5da3de65d231cd.js": "/ExpensesDashboard/precache-manifest.d46aa9c0438d6c50dd5da3de65d231cd.js",
   "service-worker.js": "/ExpensesDashboard/service-worker.js"
 }
